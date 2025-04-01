@@ -1,8 +1,6 @@
 # MOAEAM
 ## What is it?
-<br>
 ![Image text](https://github.com/ZhaoShuMins/MOAEAM/blob/master/MOAEAM%20.png)
- <br>
 
 
 ## Usage
