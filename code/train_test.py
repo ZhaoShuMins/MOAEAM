@@ -23,8 +23,6 @@ def seed_everything(seed):
     torch.cuda.manual_seed(seed)
     torch.cuda.manual_seed_all(seed)
 
-    # some cudnn methods can be random even after fixing the seed
-    # unless you tell it to be deterministic
     torch.backends.cudnn.deterministic = True
 
 def parameter_parser():
@@ -175,9 +173,6 @@ def train_and_test_model2(model, train_loader, test_loader, optimizer, num_epoch
                 print(f'best_recall:{best_recall}')
                 break
     return best_test_accuracy, best_test_f1, best_auc, best_precision, best_recall
-
-
-# In[57]:
 
 
 def test_model(model, test_loader):
