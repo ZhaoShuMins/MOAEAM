@@ -160,7 +160,7 @@ class OutputLayer(nn.Module):
 class Autoencoder1(nn.Module):
     def __init__(self, fan_in, encodim,subtypes):
         super(Autoencoder1, self).__init__()
-        # 编码器层单独定义以便于访问
+
         self.encoder_layer1 = nn.Sequential(
             nn.Dropout(0.15),
             nn.Linear(fan_in, 3000),
@@ -172,7 +172,6 @@ class Autoencoder1(nn.Module):
             nn.ELU()
         )
 
-        # 解码器
         self.decoder_layer1 = nn.Sequential(
             nn.Linear(encodim, 3000),
             nn.ELU()
@@ -181,7 +180,6 @@ class Autoencoder1(nn.Module):
             nn.Linear(3000, fan_in)
         )
 
-        # 分类器
         self.classifier = nn.Sequential(
             nn.Dropout(0.15),
             nn.Linear(encodim, 1024),
@@ -193,16 +191,13 @@ class Autoencoder1(nn.Module):
         return self.encoder_layer1[1].weight
 
     def forward(self, x):
-        # 编码过程
         x = self.encoder_layer1(x)
         encoder_output1 = x
         x = self.encoder_layer2(x)
         encoded_output = x
 
-        # 分类过程
         pre = self.classifier(encoded_output)
 
-        # 解码过程
         x = self.decoder_layer1(encoded_output)
         decoder_layer1_output = x
         x = self.decoder_layer2(x)
@@ -213,7 +208,6 @@ class Autoencoder1(nn.Module):
 class Autoencoder2(nn.Module):
     def __init__(self, fan_in, encodim,subtypes):
         super(Autoencoder2, self).__init__()
-        # 编码器层单独定义以便于访问
         self.encoder_layer1 = nn.Sequential(
             nn.Dropout(0.15),
             nn.Linear(fan_in, 3000),
@@ -225,7 +219,6 @@ class Autoencoder2(nn.Module):
             nn.ELU()
         )
 
-        # 解码器
         self.decoder_layer1 = nn.Sequential(
             nn.Linear(encodim, 3000),
             nn.ELU()
@@ -234,7 +227,6 @@ class Autoencoder2(nn.Module):
             nn.Linear(3000, fan_in)
         )
 
-        # 分类器
         self.classifier = nn.Sequential(
             nn.Dropout(0.15),
             nn.Linear(encodim, 1024),
@@ -246,16 +238,13 @@ class Autoencoder2(nn.Module):
         return self.encoder_layer1[1].weight
 
     def forward(self, x):
-        # 编码过程
         x = self.encoder_layer1(x)
         encoder_output1 = x
         x = self.encoder_layer2(x)
         encoded_output = x
 
-        # 分类过程
         pre = self.classifier(encoded_output)
 
-        # 解码过程
         x = self.decoder_layer1(encoded_output)
         decoder_layer1_output = x
         x = self.decoder_layer2(x)
@@ -267,7 +256,7 @@ class Autoencoder2(nn.Module):
 class Autoencoder3(nn.Module):
     def __init__(self, fan_in, encodim,subtypes):
         super(Autoencoder3, self).__init__()
-        # 编码器层单独定义以便于访问
+
         self.encoder_layer1 = nn.Sequential(
             nn.Dropout(0.15),
             nn.Linear(fan_in, 3000),
@@ -279,7 +268,6 @@ class Autoencoder3(nn.Module):
             nn.ELU()
         )
 
-        # 解码器
         self.decoder_layer1 = nn.Sequential(
             nn.Linear(encodim, 3000),
             nn.ELU()
@@ -288,7 +276,6 @@ class Autoencoder3(nn.Module):
             nn.Linear(3000, fan_in)
         )
 
-        # 分类器
         self.classifier = nn.Sequential(
             nn.Dropout(0.15),
             nn.Linear(encodim, 1024),
@@ -300,16 +287,13 @@ class Autoencoder3(nn.Module):
         return self.encoder_layer1[1].weight
 
     def forward(self, x):
-        # 编码过程
         x = self.encoder_layer1(x)
         encoder_output1 = x
         x = self.encoder_layer2(x)
         encoded_output = x
 
-        # 分类过程
         pre = self.classifier(encoded_output)
 
-        # 解码过程
         x = self.decoder_layer1(encoded_output)
         decoder_layer1_output = x
         x = self.decoder_layer2(x)
@@ -317,7 +301,6 @@ class Autoencoder3(nn.Module):
 
         return encoded_output,decoded_output,encoder_output1, decoder_layer1_output, pre
 
-# In[4]:
 
 class Multiomics_Attention_mechanism(nn.Module):
     def __init__(self):
